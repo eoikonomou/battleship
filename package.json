@@ -1,0 +1,58 @@
+{
+  "name": "battleship",
+  "version": "1.0.0",
+  "description": "Battleship game implemented in React",
+  "main": "src/index.jsx",
+  "scripts": {
+    "start": "node_modules/.bin/webpack serve --config webpack.config.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "react",
+    "mobx",
+    "webpack",
+    "eslint",
+    "prettier"
+  ],
+  "author": "Efstathios Oikonomou <eusoikonomou@gmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "7.21.5",
+    "@babel/core": "7.22.1",
+    "@babel/eslint-parser": "7.21.8",
+    "@babel/preset-env": "7.22.4",
+    "@babel/preset-react": "7.22.3",
+    "babel-loader": "9.1.2",
+    "css-loader": "6.8.1",
+    "eslint": "8.41.0",
+    "eslint-config-airbnb": "19.0.4",
+    "eslint-config-prettier": "8.8.0",
+    "eslint-plugin-import": "2.27.5",
+    "eslint-plugin-jsx": "0.1.0",
+    "eslint-plugin-jsx-a11y": "6.7.1",
+    "eslint-plugin-react": "7.32.2",
+    "eslint-plugin-react-hooks": "4.6.0",
+    "eslint-plugin-simple-import-sort": "10.0.0",
+    "sass": "1.62.1",
+    "sass-loader": "13.3.1",
+    "source-map-loader": "4.0.1",
+    "style-loader": "3.3.3",
+    "webpack": "5.85.0",
+    "webpack-cli": "5.1.1",
+    "webpack-dev-server": "4.15.0"
+  },
+  "dependencies": {
+    "@emotion/react": "11.11.0",
+    "@emotion/styled": "11.11.0",
+    "@mui/icons-material": "5.11.16",
+    "@mui/material": "5.13.3",
+    "clsx": "1.2.1",
+    "mobx": "6.9.0",
+    "mobx-react-lite": "3.4.3",
+    "prop-types": "15.8.1",
+    "react": "18.2.0",
+    "react-dnd": "16.0.1",
+    "react-dnd-html5-backend": "16.0.1",
+    "react-dom": "18.2.0"
+  }
+}
