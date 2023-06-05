@@ -1,5 +1,29 @@
 :root {
   --primary-color: #0D2038;
-  --secondary-color: #7B61FF;
-  --error-color: #FA3357
+  --ocean-color: #2D9BEF;
+  --ship-color: #C2C2C6;
+  --selected-ship-color: #F1F79E;
+  --miss-color: #000089;
+  --hit-color: #ED5A00;
+}
+
+html,body,#battleship-root,.battleship {
+  width: 100%;
+  height: 100%;
+}
+
+.MuiTypography-h6 {
+  font-weight: 900;
+}
+
+.battleship {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: center;
+  align-items: center;
+
+  gap: 1%;
 }

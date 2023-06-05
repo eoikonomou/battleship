@@ -1,5 +1,31 @@
-.inventory {
+.inventory__wrapper {
   display: flex;
-  width: 20vw;
-  height: 20vw;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 5px;
+
+  .inventory__controls {
+    display: flex;
+    gap: 10px;
+  }
+
+  .inventory {
+    display: flex;
+    width: calc(25vw * 10 / 11);
+    height: calc(25vw * 10 / 11);
+    padding: 5%;
+
+    &.horizontal {
+      flex-direction: column;
+    }
+
+    justify-content: center;
+    align-items: center;
+
+    gap: 10px;
+
+    background-color: grey;
+  }
 }

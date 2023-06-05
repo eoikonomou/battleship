@@ -1,25 +1,59 @@
 import './index.scss';
 
+import { Button } from '@mui/material';
+import Typography from '@mui/material/Typography';
+import clsx from 'clsx';
+import { observer } from 'mobx-react-lite';
 import PropTypes from 'prop-types';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
-import { DEFAULT_SHIPS } from '../../consts';
-import { copyObject } from '../../utils';
+import { ORIENTATION, PLAYERS } from '../../consts';
+import Store from '../../Store';
 import Ship from '../Ship';
 
-const Inventory = ({ ships }) => {
-  const [unusedShips, setUnusedShips] = useState(copyObject(DEFAULT_SHIPS));
+const Inventory = ({ store }) => {
+  const { orientation } = store;
+  const unusedShips = store.getShips(PLAYERS.USER).filter(ship => !ship.deployed);
 
-  useEffect(() => {
-    setUnusedShips(copyObject(DEFAULT_SHIPS)
-      .filter(ship => ships.every(s => s.id !== ship.id)));
-  }, [ships]);
+  const randomiseShips = () => {
+    store.randomiseShips(PLAYERS.USER);
+  };
+
+  const changeOrientation = () => {
+    store.toggleOrientation();
+  };
+
+  const resetShips = () => {
+    store.resetShips(PLAYERS.USER);
+  };
+
+  const startGame = () => {
+    store.startGame();
+  };
 
   return (
-    <div className="inventory">
-      {unusedShips.map(unusedShip => (
-        <Ship ship={unusedShip} />
-      ))}
+    <div className="inventory__wrapper">
+      <Typography variant="h6">SHIPS</Typography>
+      <div className="inventory__controls">
+        <Button variant="contained" onClick={randomiseShips}>Randomize</Button>
+        <Button variant="contained" onClick={changeOrientation}>Flip ships</Button>
+        <Button variant="contained" onClick={resetShips}>Reset</Button>
+      </div>
+      <div
+        className={clsx('inventory', {
+          horizontal: orientation === ORIENTATION.HORIZONTAL,
+          vertical: orientation === ORIENTATION.VERTICAL
+        })}
+      >
+        {unusedShips.map(unusedShip => (
+          <Ship key={unusedShip.id} ship={unusedShip} store={store} />
+        ))}
+        {unusedShips.length === 0 && (
+          <Button variant="contained" onClick={startGame}>
+            START GAME!
+          </Button>
+        )}
+      </div>
     </div>
   );
 };
@@ -27,14 +61,7 @@ const Inventory = ({ ships }) => {
 Inventory.displayName = 'Inventory';
 
 Inventory.propTypes = {
-  ships: PropTypes.arrayOf(
-    PropTypes.objectOf(
-      PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.number
-      ])
-    )
-  ).isRequired
+  store: PropTypes.instanceOf(Store).isRequired
 };
 
-export default Inventory;
+export default observer(Inventory);

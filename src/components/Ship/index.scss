@@ -1,7 +1,24 @@
-.ship {
-  opacity: 1;
+:root {
+  --ship-width: 1;
+  --ship-height: 1;
+}
 
-  &.dragging {
-    opacity: 0.5;
+.ship {
+  width: calc(25vw * var(--ship-width) / 11);
+  height: calc(25vw * var(--ship-height) / 11);
+  background-color: var(--ship-color);
+  border-radius: 15px;
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &.selected {
+    background-color: var(--selected-ship-color);
+  }
+
+  &.vertical {
+    writing-mode: vertical-lr;
+    text-orientation: upright;
   }
 }

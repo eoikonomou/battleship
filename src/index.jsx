@@ -8,4 +8,6 @@ import App from './App';
 const appElement = document.getElementById('battleship-root');
 const root = ReactDOM.createRoot(appElement);
 
-root.render(<App />);
+root.render(
+  <App />
+);
