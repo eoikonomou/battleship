@@ -1,10 +1,14 @@
 {
+  "homepage": "https://eoikonomou.github.io/battleship",
   "name": "battleship",
   "version": "1.0.0",
   "description": "Battleship game implemented in React",
-  "main": "src/index.jsx",
+  "main": "dist/battleship.js",
   "scripts": {
-    "start": "node_modules/.bin/webpack serve --config webpack.config.js",
+    "start": "node_modules/.bin/webpack serve --config webpack.dev.config.js",
+    "predeploy": "yarn build",
+    "build": "node_modules/.bin/webpack --config webpack.prod.config.js",
+    "deploy": "gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -24,6 +28,7 @@
     "@babel/preset-react": "7.22.3",
     "babel-loader": "9.1.2",
     "css-loader": "6.8.1",
+    "esbuild-loader": "3.0.1",
     "eslint": "8.41.0",
     "eslint-config-airbnb": "19.0.4",
     "eslint-config-prettier": "8.8.0",
@@ -33,6 +38,8 @@
     "eslint-plugin-react": "7.32.2",
     "eslint-plugin-react-hooks": "4.6.0",
     "eslint-plugin-simple-import-sort": "10.0.0",
+    "gh-pages": "5.0.0",
+    "html-webpack-plugin": "5.5.1",
     "sass": "1.62.1",
     "sass-loader": "13.3.1",
     "source-map-loader": "4.0.1",

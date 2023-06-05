@@ -80,7 +80,7 @@ export const getDefaultGrid = () => Array(11).fill(0).reduce((grid, row, rowInde
  */
 function generateShips(shipType, numberOfShips) {
   return Array(numberOfShips).fill(0).map((_, index) => ({
-    id: `${shipType} ${index}`,
+    id: `${shipType.slice(0, 3)} ${index}`,
     ...copyObject(SHIPS[shipType]),
     deployed: false,
     destroyed: false
